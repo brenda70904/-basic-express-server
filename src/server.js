@@ -16,7 +16,7 @@ app.get("/", logger, (req, res) => {
 });
 
 
-app.get("/person", logger, validator, (req, res) => {
+app.use("/person", logger, validator, (req, res) => {
     const person = { name: req.query.name };
     res.status(200).json(person);
 });
