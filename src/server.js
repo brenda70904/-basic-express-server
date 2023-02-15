@@ -9,6 +9,7 @@ const logger = require("./middleware/logger.js");
 const validator = require("./middleware/validator.js");
 const notFound = require("./error-handlers/500.js");
 const handleServerError = require("./error-handlers/400.js");
+const { createNextState } = require("@reduxjs/toolkit");
 
 app.get("/", logger, (req, res) => {
     const message = "here's the name ";
@@ -16,7 +17,7 @@ app.get("/", logger, (req, res) => {
 });
 
 
-app.use("/person", logger, validator, (req, res) => {
+app.use("/person", logger, validator, (req, res,) => {
     const person = { name: req.query.name };
     res.status(200).json(person);
 });
